@@ -2,7 +2,8 @@
     "name": "bank/crud",
     "autoload": {
         "psr-4": {
-            "Bank\\": "app/"
+            "Bank\\": "app/",
+            "App\\DB\\": "app/"
         }
     },
     "authors": [
@@ -11,5 +12,7 @@
             "email": "janusonytegabriele@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "ramsey/uuid": "^4.7"
+    }
 }
