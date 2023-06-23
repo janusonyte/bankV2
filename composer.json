@@ -1,0 +1,15 @@
+{
+    "name": "bank/crud",
+    "autoload": {
+        "psr-4": {
+            "Bank\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "janusonyte",
+            "email": "janusonytegabriele@gmail.com"
+        }
+    ],
+    "require": {}
+}
