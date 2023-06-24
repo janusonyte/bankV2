@@ -1,13 +1,13 @@
-<h1>Saskaitos trynimas</h1>
+<h1>Closing the account</h1>
 <form action="/account/destroy/<?= $account['id'] ?>" method="post">
     <div>
-        <p>Ar tikrai norite istrinti saskaita?</p>
+        <p>Do you really want to close the account?</p>
         <h2><?= $account['name'] ?></h2>
     </div>
     <div>
-        <button type="submit">Istrinti</button>
+        <button type="submit">Close account</button>
     </div>
     <div>
-        <a href="/account">atsaukti</a>
+        <a href="/account">Cancel</a>
     </div>
 </form>
