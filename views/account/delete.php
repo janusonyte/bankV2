@@ -1,13 +1,22 @@
-<h1>Closing the account</h1>
-<form action="/account/destroy/<?= $account['id'] ?>" method="post">
-    <div>
-        <p>Do you really want to close the account?</p>
-        <h2><?= $account['name'] ?></h2>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    Closing the account
+                </div>
+                <div class="card-body">
+                    <form action="/account/destroy/<?= $account['id'] ?>" method="post">
+                        <div class="mb-3 text-center">
+                            <p>Do you really want to close this account?</p>
+                            <h3>Name: <?= $account['name']  ?> </h3>
+                            <h3>Surname: <?= $account['lastName']  ?></h3>
+                            <h3>Account Number: <?= $account['accountNumber']  ?></h3>
+                        </div>
+                        <button type="submit" class="red mt-4">Close account :(</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <button type="submit">Close account</button>
-    </div>
-    <div>
-        <a href="/account">Cancel</a>
-    </div>
-</form>
+</div>
