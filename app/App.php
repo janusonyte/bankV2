@@ -39,7 +39,9 @@ class App
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'updateAdd') {
             return (new AccountController)->updateAdd($url[2], $_POST);
         }
-
+        if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'updateDeduct') {
+            return (new AccountController)->updateDeduct($url[2], $_POST);
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'delete') {
             return (new AccountController)->delete($url[2]);
         }

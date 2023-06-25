@@ -77,7 +77,15 @@ class AccountController
     public function updateAdd(int $id, array $request)
     {
         $data = new FileWriter('account');
-        $data->update($id, $request);
+        $data->updateAdd($id, $request);
+
+        header('Location: /account');
+    }
+
+    public function updateDeduct(int $id, array $request)
+    {
+        $data = new FileWriter('account');
+        $data->updateDeduct($id, $request);
 
         header('Location: /account');
     }
