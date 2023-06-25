@@ -74,6 +74,11 @@ class FileWriter implements DataBase
                 $oldBalance = $user['balance'];
                 $newBalance = $_POST['amount'];
                 $userData['balance'] = $oldBalance + $newBalance;
+                $userData['name'] = $user['name'];
+                $userData['lastName'] = $user['lastName'];
+                $userData['personalId'] = $user['personalId'];
+                $userData['accountNumber'] = $user['accountNumber'];
+
                 $this->data[$key] = $userData;
             }
         }
@@ -85,6 +90,10 @@ class FileWriter implements DataBase
         foreach ($this->data as $key => $user) {
             if ($user['id'] == $userId) {
                 $userData['id'] = $userId; // for safety
+                $userData['name'] = $user['name'];
+                $userData['lastName'] = $user['lastName'];
+                $userData['personalId'] = $user['personalId'];
+                $userData['accountNumber'] = $user['accountNumber'];
                 $amount = $_POST['amount'];
                 $oldBalance = $user['balance'];
                 if ($amount <= $oldBalance) {
