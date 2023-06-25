@@ -14,7 +14,8 @@
                     </div>
                     <div>
                         <label class="form-label" for="personalId">Personal ID</label>
-                        <input class="form-label" type="text" name="personalId" id="personalId" required>
+                        <input class="form-label" type="text" name="personalId" id="personalId" minlength="11"
+                            maxlength="11" required>
                     </div>
                     <div class="col m-3">
 
