@@ -43,28 +43,38 @@ class AccountController
         ]);
     }
 
-    public function withdraw(int $id)
-    {
-        $data = new FileWriter('account');
-        $account = $data->show($id);
-
-        return App::view('account/withdraw', [
-            'pageTitle' => 'Withdraw funds',
-            'account' => $account,
-        ]);
-    }
     public function deposit(int $id)
     {
         $data = new FileWriter('account');
         $account = $data->show($id);
 
         return App::view('account/deposit', [
-            'pageTitle' => 'Deposit funds',
+            'pageTitle' => 'Edit an account',
             'account' => $account,
         ]);
     }
 
+    public function withdraw(int $id)
+    {
+        $data = new FileWriter('account');
+        $account = $data->show($id);
+
+        return App::view('account/withdraw', [
+            'pageTitle' => 'Edit an account',
+            'account' => $account,
+        ]);
+    }
+
+
     public function update(int $id, array $request)
+    {
+        $data = new FileWriter('account');
+        $data->update($id, $request);
+
+        header('Location: /account');
+    }
+
+    public function updateAdd(int $id, array $request)
     {
         $data = new FileWriter('account');
         $data->update($id, $request);

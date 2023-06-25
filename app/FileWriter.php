@@ -66,6 +66,38 @@ class FileWriter implements DataBase
         }
     }
 
+    public function updateAdd(int $userId, array $userData): void
+    {
+        foreach ($this->data as $key => $user) {
+            if ($user['id'] == $userId) {
+                $userData['id'] = $userId; // for safety
+                $oldBalance = $user['balance'];
+                $newBalance = $_POST['amount'];
+                $userData['balance'] = $oldBalance + $newBalance;
+                $this->data[$key] = $userData;
+            }
+        }
+    }
+
+
+    public function updateDeduct(int $userId, array $userData): void
+    {
+        foreach ($this->data as $key => $user) {
+            if ($user['id'] == $userId) {
+                $userData['id'] = $userId; // for safety
+                $amount = $_POST['amount'];
+                $oldBalance = $user['balance'];
+                if ($amount <= $oldBalance) {
+                    $userData['balance'] = $oldBalance - $amount;
+                    $this->data[$key] = $userData;
+                } else {
+                    $userData['balance'] = $oldBalance;
+                    $this->data[$key] = $userData;
+                }
+            }
+        }
+    }
+
     public function delete(int $userId): void
     {
         foreach ($this->data as $key => $user) {
