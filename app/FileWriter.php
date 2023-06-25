@@ -12,11 +12,27 @@ class FileWriter implements DataBase
     {
         $this->fileName = $fileName;
         if (!file_exists(__DIR__ . '/../data/' . $fileName . '.json')) {
-            $this->data = [
-            ];
+            $this->data = [];
         } else {
             $this->data = json_decode(file_get_contents(__DIR__ . '/../data/' . $fileName . '.json'), 1);
         }
+    }
+
+    public static function generateIban()
+    {
+
+        $bankAccountNumber = sprintf('%016d', mt_rand(0, 99999999999999));
+        $countryCode = 'LT';
+        $iban = $countryCode . '00' . $bankAccountNumber;
+        $ibanDigits = str_split($iban);
+        $checksum = 0;
+        foreach ($ibanDigits as $digit) {
+            $checksum = ($checksum * 10 + intval($digit)) % 97;
+        }
+        $checksumDigits = sprintf('%02d', 98 - $checksum);
+        $iban = substr_replace($iban, $checksumDigits, 2, 2);
+
+        return $iban;
     }
 
 
@@ -24,15 +40,14 @@ class FileWriter implements DataBase
     {
         $id = rand(100000000, 999999999);
         $userData['id'] = $id;
-        $accountNumber = rand(100000000, 999999999);
+        $accountNumber = Filewriter::generateIban();
         $userData['accountNumber'] = $accountNumber;
         $balance = 0;
         $userData['balance'] = $balance;
         $this->data[] = $userData;
-
     }
 
-    
+
 
     public function __destruct()
     {

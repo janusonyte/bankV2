@@ -1,4 +1,4 @@
-<body style="background-color:grey;">
+<body>
     <div class="container">
         <h1 class="col m-5">Open a new account</h1>
         <div class="col m-5">

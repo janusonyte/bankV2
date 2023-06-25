@@ -2,4 +2,4 @@
 
 let mix = require('laravel-mix');
 
-mix.sass('app/app.scss', 'views');
+mix.sass('app/app.scss', 'public');

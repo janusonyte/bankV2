@@ -39,6 +39,12 @@ class App
         if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'delete') {
             return (new AccountController)->delete($url[2]);
         }
+        if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'withdraw') {
+            return (new AccountController)->withdraw($url[2]);
+        }
+        if ($_SERVER['REQUEST_METHOD'] == 'GET' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'deposit') {
+            return (new AccountController)->deposit($url[2]);
+        }
         if ($_SERVER['REQUEST_METHOD'] == 'POST' && count($url) == 3 && $url[0] == 'account' && $url[1] == 'destroy') {
             return (new AccountController)->destroy($url[2]);
         } else {
@@ -56,11 +62,11 @@ class App
 
         ob_start();
 
+        // require __DIR__ . '/../views/app.css';
         require __DIR__ . '/../views/top.php';
         require __DIR__ . '/../views/' . $path . '.php';
         require __DIR__ . '/../views/bottom.php';
 
         return ob_get_clean();
     }
-
 }
