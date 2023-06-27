@@ -1,1 +1,1 @@
-[{"name":"Dean","lastName":"Winchester","personalId":"11111111111","id":184215608,"accountNumber":"LT660014926636444600","balance":0},{"name":"Sam","lastName":"Winchester","personalId":"22222222222","id":532322521,"accountNumber":"LT820045549058270183","balance":0}]
+[{"amount":"5","id":184215608,"balance":5,"name":"Dean","lastName":"Winchester","personalId":"11111111111","accountNumber":"LT660014926636444600"},{"name":"Jonas","lastName":"Lapas","accountNumber":"LT580042709179602508","personalId":"33333333333","balance":"25","id":315280932}]

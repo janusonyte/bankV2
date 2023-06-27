@@ -110,7 +110,7 @@ class FileWriter implements DataBase
     public function delete(int $userId): void
     {
         foreach ($this->data as $key => $user) {
-            if ($user['id'] == $userId) {
+            if ($user['id'] == $userId && $user['balance'] == '0') {
                 unset($this->data[$key]);
             }
         }
