@@ -18,6 +18,12 @@ class FileWriter implements DataBase
         }
     }
 
+    public function __destruct()
+    {
+        $this->data = array_values($this->data);
+        file_put_contents(__DIR__ . '/../data/' . $this->fileName . '.json', json_encode($this->data));
+    }
+
     public static function generateIban()
     {
 
@@ -45,14 +51,6 @@ class FileWriter implements DataBase
         $balance = 0;
         $userData['balance'] = $balance;
         $this->data[] = $userData;
-    }
-
-
-
-    public function __destruct()
-    {
-        $this->data = array_values($this->data);
-        file_put_contents(__DIR__ . '/../data/' . $this->fileName . '.json', json_encode($this->data));
     }
 
 
