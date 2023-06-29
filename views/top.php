@@ -13,9 +13,9 @@
     <!-- <link rel="stylesheet" href="app.css"> -->
     <link rel="stylesheet" href="../../app.css">
 </head>
-
-<?php if (!isset($inLogin)) : ?>
 <?php require __DIR__ . "/header.php" ?>
+<?php if (!isset($inLogin)) : ?>
+
 <?php endif ?>
 <?php require_once 'Messages.php' ?>
 
