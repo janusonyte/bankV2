@@ -3,6 +3,9 @@
 namespace Bank;
 
 use App\DB\DataBase;
+use Bank\OldData;
+use Bank\Messages;
+
 
 class FileWriter implements DataBase
 {
@@ -67,17 +70,24 @@ class FileWriter implements DataBase
     public function updateAdd(int $userId, array $userData): void
     {
         foreach ($this->data as $key => $user) {
+
             if ($user['id'] == $userId) {
                 $userData['id'] = $userId; // for safety
-                $oldBalance = $user['balance'];
-                $newBalance = $_POST['amount'];
-                $userData['balance'] = $oldBalance + $newBalance;
-                $userData['name'] = $user['name'];
-                $userData['lastName'] = $user['lastName'];
-                $userData['personalId'] = $user['personalId'];
-                $userData['accountNumber'] = $user['accountNumber'];
-
-                $this->data[$key] = $userData;
+                if ($_POST['amount'] > 0) {
+                    $oldBalance = $user['balance'];
+                    $newBalance = $_POST['amount'];
+                    $userData['balance'] = $oldBalance + $newBalance;
+                    $userData['name'] = $user['name'];
+                    $userData['lastName'] = $user['lastName'];
+                    $userData['personalId'] = $user['personalId'];
+                    $userData['accountNumber'] = $user['accountNumber'];
+                    Messages::addMessage('success', 'Funds added');
+                    $this->data[$key] = $userData;
+                } else {
+                    Messages::addMessage('danger', 'Amount must be more than 0');
+                    // $this->data[$key] = $userData;
+                    // header('Location: /account/deposit/' . $userId);
+                }
             }
         }
     }
@@ -96,10 +106,14 @@ class FileWriter implements DataBase
                 $oldBalance = $user['balance'];
                 if ($amount <= $oldBalance) {
                     $userData['balance'] = $oldBalance - $amount;
+                    Messages::addMessage('success', 'Funds deducted');
                     $this->data[$key] = $userData;
                 } else {
+
                     $userData['balance'] = $oldBalance;
-                    $this->data[$key] = $userData;
+                    Messages::addMessage('danger', 'Not enough funds');
+                    // $this->data[$key] = $userData;
+                    // header('Location: /account/withdraw/' . $userId);
                 }
             }
         }
@@ -107,8 +121,8 @@ class FileWriter implements DataBase
 
     public function delete(int $userId): void
     {
-        foreach ($this->data as $key => $user) {
-            if ($user['id'] == $userId && $user['balance'] == '0') {
+        foreach ($this->data as $key => $acc) {
+            if ($acc['id'] == $userId) {
                 unset($this->data[$key]);
             }
         }

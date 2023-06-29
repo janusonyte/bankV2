@@ -8,14 +8,17 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav" style="display: flex; flex-direction: row; justify-content: space-around;">
                 <?php if (isset($_SESSION['email'])) : ?>
-                <a class="nav-link button purple-gradient text-white" href="/account/create">Add a new account</a>
-                <a class="nav-link button purple-gradient text-white" href="/account">Account list</a>
-                <form action="<?= URL . 'logout' ?>" method="post">
-                    <button type="submit" class=" red"
-                        style="display: flex; flex-direction: row-reverse">Logout</button>
+                <form action="<?= URL . 'logout' ?>" method="post" style="display: flex; flex-direction: row; ">
+                    <button type="submit" class="red"
+                        style="display: flex; flex-direction: row; justify-content: flex-end; ">Logout</button>
                 </form>
+                <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
+                    <a class="nav-link  text-white" href="/account/create">Add a new account</a>
+                    <a class="nav-link  text-white" href="/account">Account list</a>
+                </div>
+
 
                 <?php endif ?>
             </div>

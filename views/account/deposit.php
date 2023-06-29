@@ -9,6 +9,7 @@
                     <div class="card-body">
                         <form action="/account/updateAdd/<?= $account['id'] ?>" method="post">
                             <div class="mb-3">
+                                <label class="form-label">Current funds: <?= $account['balance'] ?> €</label> <br>
                                 <label class="form-label" required>Enter amount</label>
                                 <input class="form-control" name="amount" type="number">
                             </div>
