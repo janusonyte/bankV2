@@ -15,8 +15,8 @@
                         style="display: flex; flex-direction: row; justify-content: flex-end; ">Logout</button>
                 </form>
                 <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
-                    <a class="nav-link  text-white" href="/account/create">Add a new account</a>
-                    <a class="nav-link  text-white" href="/account">Account list</a>
+                    <a class="nav-link " href="/account/create">Add a new account</a>
+                    <a class="nav-link " href="/account">Account list</a>
                 </div>
 
 
